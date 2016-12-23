@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-var autoprefixer = require('autoprefixer');
+const atImport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
+
 module.exports = {
   devtool: 'source-map',
 
@@ -31,8 +33,13 @@ module.exports = {
       },
       { test: /\.json$/, loader: 'json-loader' },
       {
-        test: /\.s?css$/,
+        test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader'),
+        include: path.join(__dirname, 'src'),
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss-loader'),
         include: path.join(__dirname, 'src'),
       },
       {
@@ -45,7 +52,7 @@ module.exports = {
       },
     ],
   },
-  postcss: function() {
-    return [autoprefixer];
+  postcss: () => {
+    return [atImport(), cssnext()];
   },
 };
