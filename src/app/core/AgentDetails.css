@@ -1,0 +1,19 @@
+.avatar {
+    width: 60px;
+    height: 60px;
+    display: block;
+    border-radius: 50%;
+    vertical-align: top;
+    overflow: hidden;
+    align-self: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container + .container {
+    margin-left: 1em;
+}

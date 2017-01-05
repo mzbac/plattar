@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import 'whatwg-fetch';// fetch window.fetch polyfill
+import _ from 'lodash';
 import Carousel from '../3dCarousel/CarouselContainer';
+import AgentDetails from './AgentDetails';
 import carouselTheme from './carouselThem.css';
-import styles from './index.css';
+import styles from './PropertyDetails.css';
 
-class App extends Component {
+class PropertyDetails extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,8 +22,10 @@ class App extends Component {
   }
 
   render() {
-    const {} = this.props;
     const { carouselOffset } = this.state;
+    const { property } = this.props;
+    if (_.isEmpty(property)) return null;
+    const { images, mainImage, listers } = property;
     return (
       <div>
         <Carousel
@@ -32,15 +35,20 @@ class App extends Component {
           theme={carouselTheme}
           offsetFactor={carouselOffset}
           carouselItemStyle={{ width: 380, height: 280 }}
-          carouselItems={[{}, {}, {}, {}, {}, {}, {}, {}]}
+          carouselItems={[mainImage, ...images]}
         />
         <div className={styles.next} onClick={this.next} >Next</div>
         <div className={styles.prev} onClick={this.prev} >Prev</div>
+        <div className={styles.footer} >
+          {
+            listers.map((agent, index) => <AgentDetails key={index} agent={agent} />)
+          }
+        </div>
       </div>
     );
   }
 }
-
-App.propTypes = {};
-export default App;
-
+PropertyDetails.propTypes = {
+  property: PropTypes.object,
+};
+export default PropertyDetails;

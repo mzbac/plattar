@@ -1,0 +1,2 @@
+export getPropertyDataAction from './property';
+
