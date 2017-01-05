@@ -6,7 +6,6 @@ const atImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 
 module.exports = {
-  devtool: 'source-map',
   entry: [
     './src/index',
   ],

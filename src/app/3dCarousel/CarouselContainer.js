@@ -18,6 +18,7 @@ const CarouselContainer = props => {
     perspective,
     carouselItems,
     carouselItemStyle,
+    offsetFactor,
     theme = styles,
   } = props;
 
@@ -37,14 +38,11 @@ const CarouselContainer = props => {
             item={item}
             index={i}
             key={i}
+            offset={(360 / carouselItems.length) * offsetFactor}
             carouselItemStyle={carouselItemStyle}
             translateZ={getCarouselItemTranslateZ(width, carouselItems.length)}
           />)
         }
-        <div>
-          <button>previous</button>
-          <button>next</button>
-        </div>
       </div>
     </div>
   );
@@ -53,6 +51,7 @@ const CarouselContainer = props => {
 CarouselContainer.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  offsetFactor: PropTypes.number.isRequired,
   perspective: PropTypes.number.isRequired,
   carouselItemStyle: PropTypes.object,
   theme: PropTypes.object,
