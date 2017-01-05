@@ -35,6 +35,7 @@ export const getPropertyDataEpic = action$ =>
 export const getPropertyDataLoaderEpic = action$ =>
   action$.ofType(GETPROPERTYDATASTART)
     .map(e => e.payload.target.value)
+    .filter((text) => text.length > 6)
     .debounceTime(fetchPropertyInputDebounceTime)
     .distinctUntilChanged()
     .map(searchText => ({ type: GETPROPERTYDATALOADERSTART, payload: searchText }));
