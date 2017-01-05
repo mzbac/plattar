@@ -4,7 +4,7 @@ import {
   propertyError,
 } from './property';
 
-import { loadingState } from './loadingState';
+import loadingState from './loadingState';
 
 const rootReducer = combineReducers({
   property,

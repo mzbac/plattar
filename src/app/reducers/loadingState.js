@@ -4,7 +4,7 @@ import {
   GETPROPERTYDATAFAIL,
 } from '../constants';
 
-export const loadingState = (state = false, action) => {
+export default (state = false, action) => {
   switch (action.type) {
     case GETPROPERTYDATALOADERSTART:
       return true;
