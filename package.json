@@ -37,7 +37,8 @@
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
-    "semantic-ui-react": "^0.56.14"
+    "semantic-ui-react": "^0.56.14",
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",
