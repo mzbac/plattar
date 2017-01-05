@@ -5,7 +5,10 @@ const express = require('express');
 module.exports = {
   app() {
     const app = express();
-    const indexPath = path.join(__dirname, 'index.html');
+    let indexPath = path.join(__dirname, 'index.html');
+    if (process.env.NODE_ENV === 'production') {
+      indexPath = path.join(__dirname, '/public/index.html');
+    }
     const publicPath = express.static(path.join(__dirname, 'public'));
 
     app.use('/public', publicPath);
