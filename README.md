@@ -5,6 +5,7 @@
 - Css transform for creating 3d carousel.
 - Webpack as build tool
 - Eslint
+- Further step would be to make the 3D carousel responsive.
 
 ## Folder Structure
 
